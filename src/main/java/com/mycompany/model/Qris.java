@@ -8,6 +8,11 @@ package com.mycompany.model;
  *
  * @author Lenovo
  */
-public class Qris {
+public class Qris implements PaymentMethod {
+
+    @Override
+    public String getName() {
+        return "Qris";
+    }
 
 }

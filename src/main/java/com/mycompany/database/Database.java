@@ -10,4 +10,11 @@ package com.mycompany.database;
  */
 public class Database {
 
+    public static Conection getConection() throws SQLExecption {
+        String url = "jdbc:mysql://localhost:3306/payment_method";
+        String user = "root";
+        String PW = "Akbar2207.";
+
+        return DriverManager.getConection(url, user, PW);
+    }
 }

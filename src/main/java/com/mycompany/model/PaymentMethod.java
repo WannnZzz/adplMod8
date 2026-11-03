@@ -8,6 +8,8 @@ package com.mycompany.model;
  *
  * @author Lenovo
  */
-public class PaymentMethod {
+public interface PaymentMethod {
+
+    String getName();
 
 }

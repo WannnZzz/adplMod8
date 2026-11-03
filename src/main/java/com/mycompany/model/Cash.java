@@ -8,6 +8,11 @@ package com.mycompany.model;
  *
  * @author Lenovo
  */
-public class Cash {
+public class Cash implements PaymentMethod {
 
+    @Override
+    public String getName() {
+        return "Cash";
+
+    }
 }

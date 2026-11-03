@@ -8,6 +8,11 @@ package com.mycompany.model;
  *
  * @author Lenovo
  */
-public class Transfer {
+public class Transfer implements PaymentMethod {
+
+    @Override
+    public String getName() {
+        return "Transfer";
+    }
 
 }
