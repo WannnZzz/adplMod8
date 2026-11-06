@@ -4,17 +4,21 @@
  */
 package com.mycompany.database;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *
  * @author Lenovo
  */
 public class Database {
 
-    public static Conection getConection() throws SQLExecption {
+    public static Connection getConection() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/payment_method";
         String user = "root";
         String PW = "Akbar2207.";
 
-        return DriverManager.getConection(url, user, PW);
+        return DriverManager.getConnection(url, user, PW);
     }
 }

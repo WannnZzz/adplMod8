@@ -4,10 +4,17 @@
  */
 package com.mycompany.repository;
 
+import com.mycompany.model.Payment;
+import java.util.List;
+
 /**
  *
  * @author Lenovo
  */
-public class PaymentRepository {
+public interface PaymentRepository {
+
+    void save(Payment payment);
+
+    List<Payment> findAll();
 
 }
