@@ -16,25 +16,34 @@ public class PaymentView extends JFrame {
 
     public JTextField txtName;
     public JTextField txtAmount;
-    public JComboBox<String> cmbMethod;
-    public JButton btnPay;
 
+    public JComboBox<String> cmbMethod;
+
+    public JButton btnPay;
+    public JButton btnDelete;
+    public JButton btnReset;
+
+    public JTable table;
     public DefaultTableModel tableModel;
 
     public PaymentView() {
-        setTitle("Aplikasi Methode Pembayaran");
+
+        setTitle("Aplikasi Metode Pembayaran");
         setSize(650, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        panel.setBorder(
+                BorderFactory.createEmptyBorder(20, 20, 20, 20)
+        );
 
         txtName = new JTextField();
         txtAmount = new JTextField();
 
         cmbMethod = new JComboBox<>(
-                new String[]{"Cash", "Qris", "Transfer Bank"}
+                new String[]{"Cash", "QRIS", "Transfer Bank"}
         );
 
         btnPay = new JButton("Bayar");
@@ -55,12 +64,35 @@ public class PaymentView extends JFrame {
             "ID", "Nama", "Jumlah", "Metode", "Status"
         };
 
-        tableModel = new DefaultTableModel(columns, 0);
+        tableModel = new DefaultTableModel(columns, 0) {
 
-        JTable table = new JTable(tableModel);
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        table = new JTable(tableModel);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+
+        btnDelete = new JButton("Hapus");
+        btnReset = new JButton("Reset");
+
+        JPanel buttonPanel = new JPanel(
+                new FlowLayout(FlowLayout.RIGHT)
+        );
+
+        buttonPanel.add(btnDelete);
+        buttonPanel.add(btnReset);
+
+        JPanel bottomPanel = new JPanel(new BorderLayout());
+
+        bottomPanel.add(scrollPane, BorderLayout.CENTER);
+        bottomPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         add(panel, BorderLayout.NORTH);
-        add(new JScrollPane(table), BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.CENTER);
     }
 
     public void showMessage(String message) {

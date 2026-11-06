@@ -68,4 +68,33 @@ public class JdbcPaymentRepository implements PaymentRepository {
 
         return payments;
     }
+
+    @Override
+    public void deleteById(int id) {
+
+        String sql = "DELETE FROM payments WHERE id = ?";
+
+        try (Connection conn = Database.getConection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Gagal menghapus pembayaran: " + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void deleteAll() {
+
+        String sql = "DELETE FROM payments";
+
+        try (Connection conn = Database.getConection(); Statement st = conn.createStatement()) {
+
+            st.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Gagal mereset pembayaran: " + e.getMessage(), e);
+        }
+    }
 }
