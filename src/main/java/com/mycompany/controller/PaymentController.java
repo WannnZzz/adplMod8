@@ -63,7 +63,7 @@ public class PaymentController {
             if (selected.equalsIgnoreCase("Cash")) {
                 method = new Cash();
 
-            } else if (selected.equalsIgnoreCase("QRIS")) {
+            } else if (selected.equalsIgnoreCase("Qris")) {
                 method = new Qris();
 
             } else if (selected.equalsIgnoreCase("Transfer Bank")) {
@@ -112,7 +112,7 @@ public class PaymentController {
                 view.tableModel.addRow(new Object[]{
                     p.getId(),
                     p.getNamaCus(),
-                    p.getAmount(),
+                    String.format("%.0f", p.getAmount()),
                     p.getPaymentMethod(),
                     p.getStatus()
                 });

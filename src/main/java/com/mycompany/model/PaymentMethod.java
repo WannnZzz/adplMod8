@@ -8,6 +8,7 @@ package com.mycompany.model;
  *
  * @author Lenovo
  */
+// didalam class ini terdapat 3 prinsip solid LSP,ISP,dan OCP
 public interface PaymentMethod {
 
     String getName();
